@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookSalesForm));
             this.bookSalesLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -43,9 +45,9 @@
             this.quantityTextBox = new System.Windows.Forms.TextBox();
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.priceTextBox = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.extendedPriceTextBox = new System.Windows.Forms.TextBox();
+            this.discountTexBox = new System.Windows.Forms.TextBox();
+            this.discountedPriceTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -57,6 +59,7 @@
             this.discountSumTextBox = new System.Windows.Forms.TextBox();
             this.discountedAmountSumTextBox = new System.Windows.Forms.TextBox();
             this.averageDiscountTextBox = new System.Windows.Forms.TextBox();
+            this.printForm1 = new Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -92,9 +95,9 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.discountedPriceTextBox);
+            this.groupBox2.Controls.Add(this.discountTexBox);
+            this.groupBox2.Controls.Add(this.extendedPriceTextBox);
             this.groupBox2.Location = new System.Drawing.Point(12, 257);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(595, 147);
@@ -127,6 +130,7 @@
             this.printButton.TabIndex = 2;
             this.printButton.Text = "Print &Form";
             this.printButton.UseVisualStyleBackColor = true;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // calculateButton
             // 
@@ -136,6 +140,7 @@
             this.calculateButton.TabIndex = 1;
             this.calculateButton.Text = "&Calculate";
             this.calculateButton.UseVisualStyleBackColor = true;
+            this.calculateButton.Click += new System.EventHandler(this.calculateButton_Click);
             // 
             // clearButton
             // 
@@ -145,6 +150,7 @@
             this.clearButton.TabIndex = 3;
             this.clearButton.Text = "Clear &Sale";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // exitButton
             // 
@@ -155,6 +161,7 @@
             this.exitButton.TabIndex = 4;
             this.exitButton.Text = "E&xit";
             this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // label1
             // 
@@ -169,7 +176,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(96, 32);
+            this.label2.Location = new System.Drawing.Point(142, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 17);
             this.label2.TabIndex = 0;
@@ -178,7 +185,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(98, 66);
+            this.label3.Location = new System.Drawing.Point(144, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 17);
             this.label3.TabIndex = 2;
@@ -187,7 +194,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(98, 100);
+            this.label4.Location = new System.Drawing.Point(144, 102);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 17);
             this.label4.TabIndex = 4;
@@ -195,56 +202,56 @@
             // 
             // quantityTextBox
             // 
-            this.quantityTextBox.Location = new System.Drawing.Point(229, 32);
+            this.quantityTextBox.Location = new System.Drawing.Point(275, 34);
             this.quantityTextBox.Name = "quantityTextBox";
             this.quantityTextBox.Size = new System.Drawing.Size(124, 22);
             this.quantityTextBox.TabIndex = 1;
             // 
             // titleTextBox
             // 
-            this.titleTextBox.Location = new System.Drawing.Point(229, 66);
+            this.titleTextBox.Location = new System.Drawing.Point(275, 68);
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(313, 22);
             this.titleTextBox.TabIndex = 3;
             // 
             // priceTextBox
             // 
-            this.priceTextBox.Location = new System.Drawing.Point(229, 100);
+            this.priceTextBox.Location = new System.Drawing.Point(275, 102);
             this.priceTextBox.Name = "priceTextBox";
             this.priceTextBox.Size = new System.Drawing.Size(124, 22);
             this.priceTextBox.TabIndex = 5;
             // 
-            // textBox1
+            // extendedPriceTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(358, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(184, 22);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TabStop = false;
+            this.extendedPriceTextBox.Location = new System.Drawing.Point(275, 26);
+            this.extendedPriceTextBox.Name = "extendedPriceTextBox";
+            this.extendedPriceTextBox.ReadOnly = true;
+            this.extendedPriceTextBox.Size = new System.Drawing.Size(184, 22);
+            this.extendedPriceTextBox.TabIndex = 0;
+            this.extendedPriceTextBox.TabStop = false;
             // 
-            // textBox2
+            // discountTexBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(358, 66);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(184, 22);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.TabStop = false;
+            this.discountTexBox.Location = new System.Drawing.Point(275, 65);
+            this.discountTexBox.Name = "discountTexBox";
+            this.discountTexBox.ReadOnly = true;
+            this.discountTexBox.Size = new System.Drawing.Size(184, 22);
+            this.discountTexBox.TabIndex = 1;
+            this.discountTexBox.TabStop = false;
             // 
-            // textBox3
+            // discountedPriceTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(358, 108);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(184, 22);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.TabStop = false;
+            this.discountedPriceTextBox.Location = new System.Drawing.Point(275, 107);
+            this.discountedPriceTextBox.Name = "discountedPriceTextBox";
+            this.discountedPriceTextBox.ReadOnly = true;
+            this.discountedPriceTextBox.Size = new System.Drawing.Size(184, 22);
+            this.discountedPriceTextBox.TabIndex = 2;
+            this.discountedPriceTextBox.TabStop = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(226, 27);
+            this.label5.Location = new System.Drawing.Point(143, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 17);
             this.label5.TabIndex = 3;
@@ -253,7 +260,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(226, 66);
+            this.label6.Location = new System.Drawing.Point(143, 65);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(95, 17);
             this.label6.TabIndex = 4;
@@ -262,7 +269,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(226, 108);
+            this.label7.Location = new System.Drawing.Point(143, 107);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(115, 17);
             this.label7.TabIndex = 5;
@@ -271,7 +278,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(164, 19);
+            this.label8.Location = new System.Drawing.Point(81, 21);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(153, 17);
             this.label8.TabIndex = 0;
@@ -280,7 +287,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(164, 51);
+            this.label9.Location = new System.Drawing.Point(81, 53);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(144, 17);
             this.label9.TabIndex = 1;
@@ -289,7 +296,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(167, 82);
+            this.label10.Location = new System.Drawing.Point(84, 84);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(174, 17);
             this.label10.TabIndex = 2;
@@ -298,7 +305,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(164, 116);
+            this.label11.Location = new System.Drawing.Point(81, 118);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(120, 17);
             this.label11.TabIndex = 3;
@@ -306,7 +313,7 @@
             // 
             // quantitySumTextBox
             // 
-            this.quantitySumTextBox.Location = new System.Drawing.Point(358, 14);
+            this.quantitySumTextBox.Location = new System.Drawing.Point(275, 16);
             this.quantitySumTextBox.Name = "quantitySumTextBox";
             this.quantitySumTextBox.ReadOnly = true;
             this.quantitySumTextBox.Size = new System.Drawing.Size(184, 22);
@@ -315,7 +322,7 @@
             // 
             // discountSumTextBox
             // 
-            this.discountSumTextBox.Location = new System.Drawing.Point(358, 48);
+            this.discountSumTextBox.Location = new System.Drawing.Point(275, 50);
             this.discountSumTextBox.Name = "discountSumTextBox";
             this.discountSumTextBox.ReadOnly = true;
             this.discountSumTextBox.Size = new System.Drawing.Size(184, 22);
@@ -324,7 +331,7 @@
             // 
             // discountedAmountSumTextBox
             // 
-            this.discountedAmountSumTextBox.Location = new System.Drawing.Point(358, 82);
+            this.discountedAmountSumTextBox.Location = new System.Drawing.Point(275, 84);
             this.discountedAmountSumTextBox.Name = "discountedAmountSumTextBox";
             this.discountedAmountSumTextBox.ReadOnly = true;
             this.discountedAmountSumTextBox.Size = new System.Drawing.Size(184, 22);
@@ -333,12 +340,20 @@
             // 
             // averageDiscountTextBox
             // 
-            this.averageDiscountTextBox.Location = new System.Drawing.Point(358, 116);
+            this.averageDiscountTextBox.Location = new System.Drawing.Point(275, 118);
             this.averageDiscountTextBox.Name = "averageDiscountTextBox";
             this.averageDiscountTextBox.ReadOnly = true;
             this.averageDiscountTextBox.Size = new System.Drawing.Size(184, 22);
             this.averageDiscountTextBox.TabIndex = 7;
             this.averageDiscountTextBox.TabStop = false;
+            // 
+            // printForm1
+            // 
+            this.printForm1.DocumentName = "document";
+            this.printForm1.Form = this;
+            this.printForm1.PrintAction = System.Drawing.Printing.PrintAction.PrintToPrinter;
+            this.printForm1.PrinterSettings = ((System.Drawing.Printing.PrinterSettings)(resources.GetObject("printForm1.PrinterSettings")));
+            this.printForm1.PrintFileName = null;
             // 
             // BookSalesForm
             // 
@@ -356,6 +371,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bookSalesLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "BookSalesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -385,9 +401,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox discountedPriceTextBox;
+        private System.Windows.Forms.TextBox discountTexBox;
+        private System.Windows.Forms.TextBox extendedPriceTextBox;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox averageDiscountTextBox;
         private System.Windows.Forms.TextBox discountedAmountSumTextBox;
@@ -402,6 +418,7 @@
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Label label1;
+        private Microsoft.VisualBasic.PowerPacks.Printing.PrintForm printForm1;
     }
 }
 
